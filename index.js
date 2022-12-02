@@ -19,6 +19,6 @@ app.use(morgan("dev"));
 app.use('/messages',messagescontrollers);
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log("app listing on port 3000");
+  console.log("app listing on port 3000 if port 5000 is free");
 });
 
