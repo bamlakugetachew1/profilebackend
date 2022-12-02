@@ -15,7 +15,6 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
 // app.use('/messages',messagesmodelcontrollers);
-app.use('/messages',messagescontrollers);
 
 const connectDB = async () => {
   try {
@@ -35,6 +34,8 @@ connectDB().then(() => {
 
 const connection = require("./models/connection");
 const messagescontrollers = require("./controllers/messagecontroller");
+app.use('/messages',messagescontrollers);
+
 
 
 
