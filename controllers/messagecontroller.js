@@ -28,16 +28,19 @@ router.post("/addmessages", async (req, res) => {
     messages:req.body.messages
 
   });
-  await messages
-    .save()
-    .then((data) => {
-        transporter.sendMail(mailOptions, function(error, info){
+    await  transporter.sendMail(mailOptions, function(error, info){
         if (error) {
           console.log(error);
         } else {
           console.log('Email sent: ' + info.response);
         }
       });
+  
+  
+  await messages
+    .save()
+    .then((data) => {
+      
       
       res.json({
         message: 1,
