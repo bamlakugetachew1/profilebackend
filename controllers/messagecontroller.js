@@ -43,7 +43,7 @@ router.post("/addmessages", async (req, res) => {
   });
     await  transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-          res.send(error);
+          console.log(error);
         } else {
           console.log('Email sent: ' + info.response);
         }
