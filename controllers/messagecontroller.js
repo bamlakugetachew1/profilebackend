@@ -12,7 +12,10 @@ var transporter = nodemailer.createTransport({
   auth: {
     user: 'abuyegetachew2@gmail.com',
     pass: '0918137304'
-  }
+  },
+     tls: {
+          rejectUnauthorized: false
+      }
 });
 
 const router = express.Router();
