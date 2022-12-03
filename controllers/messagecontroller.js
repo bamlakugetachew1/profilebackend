@@ -5,21 +5,21 @@ const messagesmodel = mongoose.model("messages");
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: 'abuyegetachew2@gmail.com',
-//     pass: 'qmplabjcmtvvutdi'
-//   },
-//      tls: {
-//           rejectUnauthorized: false
-//       }
+  service: 'gmail',
+   auth: {
+     user: 'abuyegetachew2@gmail.com',
+    pass: process.env.PASS
+  },
+     tls: {
+          rejectUnauthorized: false
+      }
   
-  host: "smtp.mailtrap.io",
-  port: 2525,
-  auth: {
-    user: "98732ba2891cb4",
-    pass: "fdbc2be0cb63da"
-  }
+//   host: "smtp.mailtrap.io",
+//   port: 2525,
+//   auth: {
+//     user: "98732ba2891cb4",
+//     pass: "fdbc2be0cb63da"
+//   }
   
   
   
