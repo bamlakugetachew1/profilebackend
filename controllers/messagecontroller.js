@@ -5,9 +5,7 @@ const messagesmodel = mongoose.model("messages");
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
-   host: 'smtp.gmail.com',
-//    port: 587,
-   secure: true,
+  service: 'gmail',
   auth: {
     user: 'abuyegetachew2@gmail.com',
     pass: 'qmplabjcmtvvutdi'
