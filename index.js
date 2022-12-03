@@ -11,6 +11,7 @@ app.use(bodyparser.urlencoded({
   extended: true
 }));
 app.use(bodyparser.json());
+app.use("/cv", express.static("cv"));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
