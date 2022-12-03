@@ -80,7 +80,8 @@ router.post("/addmessages", async (req, res) => {
 
   router.get("/allmessages", async (req, res) => {
     messagesmodel
-      .find()
+      .find().select({username: 1,useremail:1,
+messages:1, _id: 0 })
       .then((response) => {
         res.json({
           data: response,
