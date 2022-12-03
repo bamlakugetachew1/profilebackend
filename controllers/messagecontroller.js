@@ -78,5 +78,18 @@ router.post("/addmessages", async (req, res) => {
    });
   });
 
+  router.get("/allmessages", async (req, res) => {
+    messagesmodel
+      .find()
+      .then((response) => {
+        res.json({
+          data: response,
+        });
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+     });
+
 
 module.exports = router
