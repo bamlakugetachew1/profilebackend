@@ -3,7 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const messagesmodel = mongoose.model("messages");
 var nodemailer = require('nodemailer');
-var sent = " ";
 
 var transporter = nodemailer.createTransport({
    host: 'smtp.gmail.com',
@@ -37,10 +36,8 @@ router.post("/addmessages", async (req, res) => {
     await  transporter.sendMail(mailOptions, function(error, info){
         if (error) {
           res.send(error);
-          sent="not sent";
         } else {
           console.log('Email sent: ' + info.response);
-          sent="sent";
         }
       });
   
@@ -53,7 +50,6 @@ router.post("/addmessages", async (req, res) => {
       res.json({
         message: 1,
         data:data,
-        sent:sent
       });
 
   
