@@ -71,7 +71,7 @@ router.post("/addmessages", async (req, res) => {
 
 
   router.get("/download", function (req, res) {
-    res.download("./cv/image.jpg" , function (err) {
+    res.download("./cv/image.pdf" , function (err) {
     if (err) {
       console.log(err);
     }
