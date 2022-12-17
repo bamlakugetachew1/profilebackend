@@ -33,6 +33,15 @@ connectDB().then(() => {
 });
 })
 
+app.get("loaderio-d48be8375b49b91c30e0e8046eeed4e5.txt", async (req, res) => {
+    
+  res.download("./cv/loaderio-d48be8375b49b91c30e0e8046eeed4e5.txt" , function (err) {
+    if (err) {
+      console.log(err);
+    }
+   });
+});
+
 const connection = require("./models/connection");
 const messagescontrollers = require("./controllers/messagecontroller");
 app.use('/messages',messagescontrollers);
