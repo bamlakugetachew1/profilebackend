@@ -5,6 +5,10 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const bodyparser = require("body-parser");
 const mongoose = require('mongoose');
+const cluster = require("cluster");
+const os = require("os");
+const numcpu = os.cpus().length;
+
 const app = express();
 app.use(cors());
 app.use(bodyparser.urlencoded({
@@ -28,9 +32,30 @@ const connectDB = async () => {
 }
 
 connectDB().then(() => {
-  app.listen(process.env.PORT || 5000, () => {
-  console.log("app listing on port 3000 if port 5000 is free");
-});
+  
+//   app.listen(process.env.PORT || 5000, () => {
+//   console.log("app listing on port 3000 if port 5000 is free");
+// });
+  if (cluster.isMaster) {
+  for (let i = 0; i < numcpu; i++) {
+    cluster.fork();
+  }
+  cluster.on("exit", (worker, code, signal) => {
+    console.log(`worker${worker.process.pid} died`);
+    cluster.fork();
+  });
+} else {
+  console.log(process.pid);
+  app.listen(process.env.PORT || 5000, (err) => {
+    if (!err) {
+      console.log(`app is running at ${process.env.port}`);
+    }
+  });
+}
+  
+  
+  
+  
 })
 
 app.get("/loaderio-d48be8375b49b91c30e0e8046eeed4e5.txt", async (req, res) => {
