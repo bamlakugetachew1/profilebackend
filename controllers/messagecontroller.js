@@ -92,5 +92,13 @@ messages:1, _id: 0 })
       });
      });
 
+  router.get("/allmessages1", async (req, res) => {
+ 
+    
+       res.json({
+          data: "hello",
+        });
+     });
+
 
 module.exports = router
