@@ -48,7 +48,7 @@ connectDB().then(() => {
   console.log(process.pid);
   app.listen(process.env.PORT || 5000, (err) => {
     if (!err) {
-      console.log(`app is running at ${process.env.port}`);
+      console.log(`app is running at ${process.env.PORT}`);
     }
   });
 }
