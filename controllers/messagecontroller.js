@@ -3,6 +3,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const messagesmodel = mongoose.model("messages");
 var nodemailer = require('nodemailer');
+import {
+  P2cBalancer,
+  RandomBalancer,
+} from 'load-balancers';
+
+const proxies = [
+  'https://cute-teal-sea-lion-yoke.cyclic.app/',
+  'https://dukannethiopia.cyclic.app/',
+];
+
+const balancer = new P2cBalancer(proxies.length);
+
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -93,11 +105,12 @@ messages:1, _id: 0 })
      });
 
   router.get("/allmessages1", async (req, res) => {
- 
-    
+     const proxy = proxies[balancer.pick()];
+      console.log(proxy);
        res.json({
-          data: "hello",
+          data:  proxy ,
         });
+
      });
 
 

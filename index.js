@@ -19,7 +19,6 @@ app.use("/cv", express.static("cv"));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
-// app.use('/messages',messagesmodelcontrollers);
 
 const connectDB = async () => {
   try {
@@ -32,10 +31,6 @@ const connectDB = async () => {
 }
 
 connectDB().then(() => {
-  
-//   app.listen(process.env.PORT || 5000, () => {
-//   console.log("app listing on port 3000 if port 5000 is free");
-// });
   if (cluster.isMaster) {
   for (let i = 0; i < numcpu; i++) {
     cluster.fork();
@@ -59,6 +54,7 @@ connectDB().then(() => {
   
 })
 
+// load.io test
 app.get("/loaderio-d48be8375b49b91c30e0e8046eeed4e5.txt", async (req, res) => {
     
   res.download("./cv/loaderio-d48be8375b49b91c30e0e8046eeed4e5.txt" , function (err) {
@@ -67,6 +63,7 @@ app.get("/loaderio-d48be8375b49b91c30e0e8046eeed4e5.txt", async (req, res) => {
     }
    });
 });
+
 
 const connection = require("./models/connection");
 const messagescontrollers = require("./controllers/messagecontroller");
