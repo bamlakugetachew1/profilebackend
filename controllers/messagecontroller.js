@@ -3,10 +3,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const messagesmodel = mongoose.model("messages");
 var nodemailer = require('nodemailer');
-import {
-  P2cBalancer,
-  RandomBalancer,
-} from 'load-balancers';
+const P2cBalancer = require("load-balancers").P2cBalancer;
+
+// import {
+//   P2cBalancer,
+//   RandomBalancer,
+// } from 'load-balancers';
 
 const proxies = [
   'https://cute-teal-sea-lion-yoke.cyclic.app/',
